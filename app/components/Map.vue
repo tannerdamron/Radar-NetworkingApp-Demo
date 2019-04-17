@@ -1,6 +1,8 @@
 <template>
     <Page class="page">
-        <ActionBar class="action-bar" title="Vue Mapbox Example"></ActionBar>
+        <ActionBar class="action-bar" title="People Around You">
+            <NavigationButton visibility="collapsed"></NavigationButton>
+        </ActionBar>
         <GridLayout>
                 <Mapbox
                     accessToken="sk.eyJ1IjoiZmZkc2F0diIsImEiOiJjanVsbGozMW8yOGVqNGV1anp6MXozNGM2In0.KZi-vKWWuC_WB-awjLwauQ"
@@ -8,8 +10,8 @@
                     latitude="47.609193"
                     longitude="-122.337516"
                     hideCompass="true"
-                    zoomLevel="12"
-                    showUserLocation="false"
+                    zoomLevel="15"
+                    showUserLocation="true"
                     disableZoom="false"
                     disableRotation="false"
                     disableScroll="false"
@@ -23,6 +25,9 @@
 <script>
     import Kenny from './Kenny';
     import * as utils from "utils/utils";
+    import Vue from "nativescript-vue";
+    import RadSideDrawer from "nativescript-ui-sidedrawer/vue";
+    Vue.use(RadSideDrawer);
     export default {
         data () {
             return { };
@@ -62,7 +67,14 @@
                         }
                     }
                 ]);
-            }
+            },
+            onOpenDrawerTap() {
+                this.$refs.drawer.nativeView.showDrawer();
+            },
+
+            onCloseDrawerTap() {
+                this.$refs.drawer.nativeView.closeDrawer();
+            },
         }
     };
 </script>

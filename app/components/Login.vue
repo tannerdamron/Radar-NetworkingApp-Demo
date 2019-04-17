@@ -23,7 +23,7 @@ const userService = {
   }
 };
 
-import App from './App';
+import Map from './Map';
   
   export default {
       data() {
@@ -47,7 +47,7 @@ import App from './App';
           userService
             .login(this.user)
             .then(() => {
-              this.$navigateTo(App);
+              this.$navigateTo(Map);
             })
             .catch(() => {
               this.alert("Couldnt find account");
