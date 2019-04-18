@@ -12,7 +12,10 @@
       <Label text="Prefers: Vue & NativeScript" class="profileText" />
       <Label text="Hobbies: " class="profileText" textWrap="true" />
       <Label text="Occupation: Student at Epicodus" class="profileText" />
-      <Button text="Message" @tap="messageModal" class="btn btn-primary"></Button>
+      <GridLayout row="auto" columns="*">
+        <Button text="Back" @tap="goHome" row="0" class="btn btn-primary special" horizontalAlignment="left"></Button>
+        <Button text="Message" @tap="messageModal" row="0" class="btn btn-primary special" horizontalAlignment="right"></Button>
+      </GridLayout>
     </StackLayout>
   </Page>
 </template>
@@ -20,10 +23,12 @@
 <script>
 import {openUrl} from "utils/utils";
 import Message from "./Message";
+import Map from "./Map";
 export default {
   data() {
             return {
-              Message: Message
+              Message: Message,
+              Map: Map
             };
         },
   methods: {
@@ -35,13 +40,21 @@ export default {
       },
       messageModal() {
         var options = { fullscreen: true };
-        this.$showModal(Message);
+        this.$showModal(Message, options);
+      },
+      goHome(){
+        this.$navigateTo(Map);
       }
   }
 }
 </script>
 
 <style scoped>
+
+.special{
+  width: 30%;
+}
+
 .page {
   background-image: linear-gradient(cornflowerblue, #D686EA);
 }
