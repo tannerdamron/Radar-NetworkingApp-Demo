@@ -3,14 +3,14 @@
     <ActionBar title="Profile">
     </ActionBar>
     <StackLayout dock="top" height="90%" width="100%" style="">
-      <Image src="https://www.shareicon.net/data/128x128/2016/09/01/822711_user_512x512.png" stretch="aspectFill" class="profilePic"></Image>
-      <Label text="Kenny Halim" color="#000" fontSize="24" fontWeight="bold" textAlignment="center" />
-      <Label text="Location: Seattle, WA" class="profileText" />
+      <Image src="https://media.licdn.com/dms/image/C5603AQHLpcjW4EogRw/profile-displayphoto-shrink_200_200/0?e=1560988800&v=beta&t=Eoxz9GJcMPG6Eu5LyOKwZI6DkJWEzuIRn4fblXuMCJI" stretch="aspectFill" class="profilePic"></Image>
+      <Label text="Tanner Damron" color="#000" fontSize="24" fontWeight="bold" textAlignment="center" />
+      <Label text="Location: Kingston, WA" class="profileText" />
       <Label text="GitHub Account" @tap="openGithub" class="clickLink profileText" />
       <Label text="LinkedIn" @tap="openLinkedin" class="clickLink profileText" />
       <Label text="Proficient in: JS, C#, Vue, Angular, NativeScript" class="profileText" />
       <Label text="Prefers: Vue & NativeScript" class="profileText" />
-      <Label text="Hobbies: " class="profileText" textWrap="true" />
+      <Label text="Hobbies: Hiking, Playing ukelele & piano, building web apps" class="profileText" textWrap="true" />
       <Label text="Occupation: Student at Epicodus" class="profileText" />
       <Button text="Message" @tap="messageModal" class="btn btn-primary"></Button>
     </StackLayout>
@@ -28,10 +28,13 @@ export default {
         },
   methods: {
       openGithub() {
-        openUrl("https://github.com/kennyhalim");
+        openUrl("https://github.com/tannerdamron");
       },
       openLinkedin() {
-        openUrl("https://www.linkedin.com/in/kenny-halim-687485144/");
+        openUrl("https://www.linkedin.com/in/tannerdamron/");
+      },
+      messageModal() {
+        this.$showModal(Message);
       }
   }
 }

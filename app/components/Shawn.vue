@@ -4,7 +4,7 @@
     </ActionBar>
     <StackLayout dock="top" height="90%" width="100%" style="">
       <Image src="https://www.shareicon.net/data/128x128/2016/09/01/822711_user_512x512.png" stretch="aspectFill" class="profilePic"></Image>
-      <Label text="Kenny Halim" color="#000" fontSize="24" fontWeight="bold" textAlignment="center" />
+      <Label text="Shawn Lunsford" color="#000" fontSize="24" fontWeight="bold" textAlignment="center" />
       <Label text="Location: Seattle, WA" class="profileText" />
       <Label text="GitHub Account" @tap="openGithub" class="clickLink profileText" />
       <Label text="LinkedIn" @tap="openLinkedin" class="clickLink profileText" />
@@ -28,10 +28,10 @@ export default {
         },
   methods: {
       openGithub() {
-        openUrl("https://github.com/kennyhalim");
+        openUrl("https://github.com/LondresRi");
       },
       openLinkedin() {
-        openUrl("https://www.linkedin.com/in/kenny-halim-687485144/");
+        openUrl("https://www.linkedin.com/in/lunsfordsk/");
       }
   }
 }

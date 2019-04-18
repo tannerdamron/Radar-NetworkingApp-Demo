@@ -24,6 +24,11 @@
 
 <script>
     import Kenny from './Kenny';
+    import Tanner from './Tanner';
+    import Young from './Young';
+    import Clara from './Clara';
+    import Aaron from './Aaron';
+    import Shawn from './Shawn';
     import * as utils from "utils/utils";
     import Vue from "nativescript-vue";
     import RadSideDrawer from "nativescript-ui-sidedrawer/vue";
@@ -41,7 +46,7 @@
                         title: "Tanner, Javascript",
                         subtitle: "Testing app",
                         onCalloutTap: () => {
-                            utils.openUrl("https://www.thepolyglotdeveloper.com");
+                            this.$navigateTo(Tanner);
                         }
                     }
                 ]);
@@ -63,7 +68,40 @@
                         title: "Young, C#",
                         subtitle: "Testing app",
                         onCalloutTap: () => {
-                            utils.openUrl("https://www.thepolyglotdeveloper.com");
+                            this.$navigateTo(Young);
+                        }
+                    }
+                ]);
+                args.map.addMarkers([
+                    {
+                        lat: 47.608339,   
+                        lng: -122.336899,
+                        title: "Shawn, Angular",
+                        subtitle: "Testing app",
+                        onCalloutTap: () => {
+                            this.$navigateTo(Shawn);
+                        }
+                    }
+                ]);
+                args.map.addMarkers([
+                    {
+                        lat: 47.608504,  
+                        lng: -122.337855,
+                        title: "Clara, Javascript",
+                        subtitle: "Testing app",
+                        onCalloutTap: () => {
+                            this.$navigateTo(Clara);
+                        }
+                    }
+                ]);
+                args.map.addMarkers([
+                    {
+                        lat: 47.608685, 
+                        lng: -122.339733,
+                        title: "Aaron, Angular",
+                        subtitle: "Testing app",
+                        onCalloutTap: () => {
+                            this.$navigateTo(Aaron);
                         }
                     }
                 ]);
