@@ -16,6 +16,7 @@
   "dependencies": {
     "email-validator": "^2.0.4",
     "nativescript-loading-indicator": "^2.4.0",
+    "nativescript-mapbox": "^4.4.1",
     "nativescript-plugin-firebase": "^8.2.0",
     "nativescript-vue": "^2.0.0",
     "tns-core-modules": "^5.0.2",

@@ -12,6 +12,8 @@ export const authService = new AuthService()
 Vue.prototype.$authService = authService
 Vue.prototype.$backendService = backendService
 
+Vue.registerElement("Mapbox", () => require("nativescript-mapbox").MapboxView)
+
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')
 
