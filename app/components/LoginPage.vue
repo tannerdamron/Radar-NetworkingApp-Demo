@@ -127,7 +127,7 @@ export default {
         .login(this.user)
         .then(() => {
 		  loader.hide();
-		  this.$navigateTo(HomePage);          
+		  this.$navigateTo(Map);          
         })
         .catch(err => {
           console.error(err);
@@ -136,21 +136,27 @@ export default {
         });
     },
     register() {
+      var validator = require("email-validator");
+      if (!validator.validate(this.user.email)) {
+        loader.hide();
+        this.alert("Please enter a valid email address.");
+        return;
+      }
       if (this.user.password != this.user.confirmPassword) {
         loader.hide();
-		this.alert("Your passwords do not match.");
+		    this.alert("Your passwords do not match.");
         return;
       }
       if (this.user.password.length < 6) {
         loader.hide();
-		this.alert("Your password must at least 6 characters.");
+		    this.alert("Your password must at least 6 characters.");
         return;
       }
       userService
         .register(this.user)
         .then(() => {
           loader.hide();
-		  this.alert("Your account was successfully created.");
+		      this.alert("Your account was successfully created.");
           this.isLoggingIn = true;
         })
         .catch(err => {

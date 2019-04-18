@@ -14,6 +14,7 @@
     }
   },
   "dependencies": {
+    "email-validator": "^2.0.4",
     "nativescript-loading-indicator": "^2.4.0",
     "nativescript-plugin-firebase": "^8.2.0",
     "nativescript-vue": "^2.0.0",
