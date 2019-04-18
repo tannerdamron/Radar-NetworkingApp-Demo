@@ -4,7 +4,7 @@
 		<FlexboxLayout class="page">
       <StackLayout v-bind:class="getClass()">
 			<StackLayout class="form">
-				<Image class="logo" src="~/assets/images/NativeScript-Vue.png" />
+				<Image class="logo" src="~/assets/images/Radarlogo.png" />
 				<Label class="header" text="Networking Improved" />
         <StackLayout v-show="!isInitialized">
           <Label text="Loading" class="loading-label"/>
@@ -239,6 +239,7 @@ export default {
 	}
 
 	.logo {
+    margin-top: 80;
 		margin-bottom: 12;
 		height: 90;
 		font-weight: bold;
