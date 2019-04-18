@@ -28,7 +28,7 @@
 					<StackLayout class="hr-light" />
 				</StackLayout>
 
-				<Button v-show="(isLoggingIn && isInitialized)" :text="isLoggingIn ? 'Log In' : 'Sign Up'" @tap="submit" class="btn btn-primary m-t-20" />
+				<Button v-show="isInitialized" :text="isLoggingIn ? 'Log In' : 'Sign Up'" @tap="submit" class="btn btn-primary m-t-20" />
 				<Label v-show="(isLoggingIn && isInitialized)" text="Forgot your password?" class="login-label" @tap="forgotPassword" />
 			</StackLayout>
 
