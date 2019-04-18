@@ -1,67 +1,52 @@
 <template>
-	<Page>
+	<Page actionBarHidden="true" backgroundSpanUnderStatusBar="true">
+    <ScrollView>
 		<FlexboxLayout class="page">
+      <StackLayout v-bind:class="getClass()">
 			<StackLayout class="form">
 				<Image class="logo" src="~/assets/images/NativeScript-Vue.png" />
 				<Label class="header" text="Networking Improved" />
-
-				<StackLayout class="input-field" marginBottom="25">
+        <StackLayout v-show="!isInitialized">
+          <Label text="Loading" class="loading-label"/>
+          <ActivityIndicator  busy="true" class="activity-indicator"/>
+        </StackLayout>
+				<StackLayout v-show="isInitialized" class="input-field" marginBottom="25">
 					<TextField class="input" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" v-model="user.email"
 					 returnKeyType="next" @returnPress="focusPassword" fontSize="18" />
 					<StackLayout class="hr-light" />
 				</StackLayout>
 
-				<StackLayout class="input-field" marginBottom="25">
+				<StackLayout v-show="isInitialized" class="input-field" marginBottom="25">
 					<TextField ref="password" class="input" hint="Password" secure="true" v-model="user.password" :returnKeyType="isLoggingIn ? 'done' : 'next'"
 					 @returnPress="focusConfirmPassword" fontSize="18" />
 					<StackLayout class="hr-light" />
 				</StackLayout>
 
-				<StackLayout v-show="!isLoggingIn" class="input-field">
+				<StackLayout v-show="(isInitialized && !isLoggingIn)"  class="input-field">
 					<TextField ref="confirmPassword" class="input" hint="Confirm password" secure="true" v-model="user.confirmPassword" returnKeyType="done"
 					 fontSize="18" />
 					<StackLayout class="hr-light" />
 				</StackLayout>
 
-				<Button :text="isLoggingIn ? 'Log In' : 'Sign Up'" @tap="submit" class="btn btn-primary m-t-20" />
-				<Label v-show="isLoggingIn" text="Forgot your password?" class="login-label" @tap="forgotPassword" />
+				<Button v-show="(isLoggingIn && isInitialized)" :text="isLoggingIn ? 'Log In' : 'Sign Up'" @tap="submit" class="btn btn-primary m-t-20" />
+				<Label v-show="(isLoggingIn && isInitialized)" text="Forgot your password?" class="login-label" @tap="forgotPassword" />
 			</StackLayout>
 
-			<Label class="login-label sign-up-label" @tap="toggleForm">
+			<Label v-show="isInitialized" class="login-label sign-up-label" @tap="toggleForm">
 	          <FormattedString>
 	            <Span :text="isLoggingIn ? 'Don’t have an account? ' : 'Back to Login'" />
 	            <Span :text="isLoggingIn ? 'Sign up' : ''" class="bold" />
 	          </FormattedString>
 	        </Label>
+      </StackLayout>
 		</FlexboxLayout>
-	</Page>
+    </ScrollView>
+</Page>
 </template>
 <script>
 import firebase from "nativescript-plugin-firebase";
 import Map from "./Map";
-// A stub for a service that authenticates users.
-const userService = {
-  async register(user) {
-    return await firebase.createUser({
-      email: user.email,
-      password: user.password
-    });
-  },
-  async login(user) {
-    return await firebase.login({
-      type: firebase.LoginType.PASSWORD,
-      passwordOptions: {
-        email: user.email,
-        password: user.password
-      }
-    });
-  },
-  async resetPassword(email) {
-    return await firebase.resetPassword({
-      email: email
-    });
-  }
-};
+
 
 var LoadingIndicator = require("nativescript-loading-indicator")
   .LoadingIndicator;
@@ -70,12 +55,18 @@ export default {
   data() {
     return {
       isLoggingIn: true,
+      isInitialized: false,
       user: {
         email: "",
         password: "",
         confirmPassword: ""
       }
     };
+  },
+  created() {
+    setTimeout(() => {
+      this.isInitialized = true;
+    }, 1500);
   },
   mounted() {
     let that = this;
@@ -107,6 +98,12 @@ export default {
       );
   },
   methods: {
+    getClass() {
+      return {
+          "container-loading": this.isInitialized,
+          "container-loaded": !this.isInitialized
+      };
+    },
     toggleForm() {
       this.isLoggingIn = !this.isLoggingIn;
     },
@@ -123,7 +120,7 @@ export default {
       }
     },
     login() {
-      userService
+      this.$authService
         .login(this.user)
         .then(() => {
 		  loader.hide();
@@ -152,11 +149,10 @@ export default {
 		    this.alert("Your password must at least 6 characters.");
         return;
       }
-      userService
+      this.$authService
         .register(this.user)
         .then(() => {
           loader.hide();
-		      this.alert("Your account was successfully created.");
           this.isLoggingIn = true;
         })
         .catch(err => {
@@ -177,7 +173,7 @@ export default {
       }).then(data => {
         if (data.result) {
           loader.show();
-          userService
+          this.$authService
             .resetPassword(data.text.trim())
             .then(() => {
               loader.hide();
@@ -289,4 +285,34 @@ export default {
 		color: #000000;
     text-decoration: underline;
 	}
+
+  .container-loading {
+    animation-name: loading;
+    animation-fill-mode: forwards;
+    animation-duration: 0.6;
+    animation-iteration-count: 1;
+  }
+  @keyframes loading {
+    0% {
+      transform: translate(0, 200);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  .container-loaded {
+    animation-name: loaded;
+    animation-fill-mode: forwards;
+    animation-duration: 0.6;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes loaded {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 200);
+    }
+  }
 </style>
