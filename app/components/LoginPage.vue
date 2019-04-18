@@ -37,26 +37,32 @@
 	</Page>
 </template>
 <script>
+import firebase from "nativescript-plugin-firebase";
+import Map from "./Map";
 // A stub for a service that authenticates users.
 const userService = {
-  register(user) {
-    return Promise.resolve(user);
+  async register(user) {
+    return await firebase.createUser({
+      email: user.email,
+      password: user.password
+    });
   },
-  login(user) {
-    return Promise.resolve(user);
+  async login(user) {
+    return await firebase.login({
+      type: firebase.LoginType.PASSWORD,
+      passwordOptions: {
+        email: user.email,
+        password: user.password
+      }
+    });
   },
-  resetPassword(email) {
-    return Promise.resolve(email);
+  async resetPassword(email) {
+    return await firebase.resetPassword({
+      email: email
+    });
   }
 };
-// A stub for the main page of your app. In a real app you’d put this page in its own .vue file.
-const HomePage = {
-  template: `
-	<Page>
-        <Label class="m-20" textWrap="true" text="You have successfully authenticated. This is where you build your core application functionality."></Label>
-	</Page>
-	`
-};
+
 export default {
   data() {
     return {
@@ -67,6 +73,35 @@ export default {
         confirmPassword: ""
       }
     };
+  },
+  mounted() {
+    let that = this;
+    firebase
+      .init({
+        onAuthStateChanged: data => {
+          console.log(
+            (data.loggedIn
+              ? "Logged in to firebase"
+              : "Logged out from firebase") +
+              " (firebase.init() onAuthStateChanged callback)"
+          );
+          if (data.loggedIn) {
+            that.$backendService.token = data.user.uid;
+            console.log("uID: " + data.user.uid);
+            that.$store.commit("setIsLoggedIn", true);
+          } else {
+            that.$store.commit("setIsLoggedIn", false);
+          }
+        }
+      })
+      .then(
+        function(instance) {
+          console.log("firebase.init done");
+        },
+        function(error) {
+          console.log("firebase.init error: " + error);
+        }
+      );
   },
   methods: {
     toggleForm() {
@@ -87,7 +122,7 @@ export default {
       userService
         .login(this.user)
         .then(() => {
-          this.$navigateTo(HomePage);
+          this.$navigateTo(Map);
         })
         .catch(() => {
           this.alert("Unfortunately we could not find your account.");

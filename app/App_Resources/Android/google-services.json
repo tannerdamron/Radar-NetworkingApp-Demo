@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "561894638936",
+    "firebase_url": "https://networkingapp-c60e1.firebaseio.com",
+    "project_id": "networkingapp-c60e1",
+    "storage_bucket": "networkingapp-c60e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561894638936:android:e99baee342773586",
+        "android_client_info": {
+          "package_name": "com.networkingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561894638936-gjckd7fafua1nkiksjnbaipbipejn57s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFwIVnqVbphSmilOlDDeEqhLk3XanY2pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561894638936-gjckd7fafua1nkiksjnbaipbipejn57s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
