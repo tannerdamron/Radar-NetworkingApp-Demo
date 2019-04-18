@@ -46,7 +46,7 @@
 <script>
 import firebase from "nativescript-plugin-firebase";
 import Map from "./Map";
-
+import { mapState } from "vuex";
 
 var LoadingIndicator = require("nativescript-loading-indicator")
   .LoadingIndicator;
@@ -63,10 +63,22 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState(["isLoggedIn"])
+  },
   created() {
-    setTimeout(() => {
+    if(this.$store.state.isLoggedIn!=null){
       this.isInitialized = true;
-    }, 1500);
+    }
+  },
+  watch: {   
+    isLoggedIn(val) {
+      if (!val) {        
+        this.isInitialized = true;        
+      }else{
+        this.$navigateTo(Map, { clearHistory: true });
+      }
+    }
   },
   mounted() {
     let that = this;
@@ -124,7 +136,7 @@ export default {
         .login(this.user)
         .then(() => {
 		  loader.hide();
-		  this.$navigateTo(Map);          
+		  this.$store.commit('setIsLoggedIn', true);          
         })
         .catch(err => {
           console.error(err);
