@@ -306,7 +306,8 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 #### Open Locally
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
-2. Execute the command `$ tns run <platform> --bundle`
+2. Download the "Android Studio" application, and open an android emulator.
+2. Execute the command `$ tns run android --bundle`
 
 #### Edit
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
