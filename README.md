@@ -14,7 +14,7 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 ## Known Bugs
 
-* Dynamic routing and user profile does not work at the moment.
+* About Us and dynamic routing to created user profiles does not work at the moment.
 
 ## Specifications
 
@@ -53,11 +53,11 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
   </tr>
   <tr>
     <td> Behavior </td>
-    <td>As a new user, I want to be able to use my current sign in with Google to use the app</td>
+    <td>As a new user, I want to be able to use my current sign in to use the app</td>
   </tr>
   <tr>
     <td> Input </td>
-    <td>User Google Gmail credentials</td>
+    <td>Username and password</td>
   </tr>
   <tr>
     <td> Output </td>
@@ -290,11 +290,11 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 * [Node.js](https://nodejs.org/en/)
 * [Node.js Package Manager (npm)](https://www.npmjs.com/)
 * [Nativescript CLI](https://docs.nativescript.org/start/quick-setup)
-* [Nativescript Playground](https://docs.nativescript.org/start/quick-setup#step-3-install-the-nativescript-playground-app)
+* [Android Studio](https://developer.android.com/studio)
 
 #### Download Repo
 1. Download and install required software: Node.js, npm
-2. Clone [this repository](https://github.com/LondresRi/Radar-NetworkingApp-Demo.git): `$ git clone https://github.com/LondresRi/Radar-NetworkingApp-Demo.git`
+2. Clone [this repository](https://github.com/kennyhalim/Radar-NetworkingApp-Demo.git): `$ git clone https://github.com/kennyhalim/Radar-NetworkingApp-Demo.git`
 
 #### Prepare
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
@@ -302,12 +302,16 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 #### Build - Production
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
-2. Execute the command `$ tns build <platform> --bundle`
+2. Execute the command `$ tns build android --bundle`
+
+### View Code
+1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
+2. Use preferred text editor or IDE to see all code used.
 
 #### Open Locally
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
 2. Download the "Android Studio" application, and open an android emulator.
-2. Execute the command `$ tns run android --bundle`
+2. Execute the command `$ tns run android --bundle` with an Android Phone Emulator open.
 
 #### Edit
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
@@ -315,7 +319,7 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 #### Debug
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
-2. Execute the command `$ tns debug <platform> --bundle`
+2. Execute the command `$ tns debug android --bundle`
 
 
 ## Built With
@@ -331,13 +335,14 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 * Node.js v10.15.3
 * npm v6.4.1
 * Babel v7.0.0
+* Android Studio
 
 ## Contributors
 
 | Author | GitHub | Email |
 |--------|:------:|:-----:|
-| Tanner Damron | [tannerdamron](https://github.com/tannerdamron) | [tanner.mdamron@gmail.com](tanner.mdamron@gmail.com) |
-| Kenny Halim | [kennyhalim](https://github.com/kennyhalim) | [kennyhalim98@gmail.com](kennyhalim98@gmail.com) |
+| Tanner Damron | [tannerdamron](https://github.com/tannerdamron) | [tanner.mdamron@gmail.com](mailto:tanner.mdamron@gmail.com) |
+| Kenny Halim | [kennyhalim](https://github.com/kennyhalim) | [kennyhalim98@gmail.com](mailto:kennyhalim98@gmail.com) |
 | Young Liu | [youngzliu](https://github.com/youngzliu) | [youngliu92@gmail.com](mailto:youngliu92@gmail.com) |
 | Shawn Lunsford | [LondresRi](https://github.com/LondresRi) |  [lunsford.sk@gmail.com](mailto:lunsford.sk@gmail.com) |
 | Clara Munro | [claramunro](https://github.com/claramunro) | [clarajmunro@gmail.com](mailto:clarajmunro@gmail.com) |
