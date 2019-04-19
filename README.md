@@ -14,7 +14,7 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 ## Known Bugs
 
-* No known bugs.
+* Dynamic routing and user profile does not work at the moment.
 
 ## Specifications
 
