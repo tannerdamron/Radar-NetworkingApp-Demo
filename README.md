@@ -294,7 +294,7 @@ Radar is networking mobile app that utilizes geo-locations to allow local profes
 
 #### Download Repo
 1. Download and install required software: Node.js, npm
-2. Clone [this repository](https://github.com/kennyhalim/Radar-NetworkingApp-Demo.git): `$ git clone https://github.com/kennyhalim/Radar-NetworkingApp-Demo.git`
+2. Clone [this repository](https://github.com/tannerdamron/Radar-NetworkingApp-Demo.git): `$ git clone https://github.com/tannerdamron/Radar-NetworkingApp-Demo.git`
 
 #### Prepare
 1. Navigate to the application directory: `$ cd Radar-NetworkingApp-Demo`
